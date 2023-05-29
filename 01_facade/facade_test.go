@@ -2,13 +2,25 @@ package facade
 
 import "testing"
 
-var expect = "A module running\nB module running"
-
-// TestFacadeAPI ...
-func TestFacadeAPI(t *testing.T) {
-	api := NewAPI()
-	ret := api.Test()
-	if ret != expect {
-		t.Fatalf("expect %s, return %s", expect, ret)
+// TestFacadeAPI1 ...
+func TestFacadeAPI1(t *testing.T) {
+	computer := &Computer{
+		CPU:    &CPU857{},
+		Memory: &Memory8{},
+		Disk:   &DiskHDD{},
 	}
+	// 启动3个组件不需要每个都调用一次，只需要启动computer即可
+	computer.Start()
+
+}
+
+// TestFacadeAPI2 ...
+func TestFacadeAPI2(t *testing.T) {
+	computer := &Computer{
+		CPU:    &CPU858{},
+		Memory: &Memory16{},
+		Disk:   &DiskSSD{},
+	}
+
+	computer.Start()
 }
